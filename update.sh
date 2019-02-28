@@ -11,7 +11,7 @@ gunzip -f cidr.txt.gz || exit 1
 ipset create -exist BLACKLIST hash:net  || exit 1
 ipset flush BLACKLIST || exit 1
 
-array=("CH" "KR" "BR");
+array=("CH" "HK" "KR" "BR");
 i=0
 for COUNTRY_CODE in ${array[@]}
 do
