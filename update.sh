@@ -8,8 +8,8 @@ gunzip -f cidr.txt.gz || exit 1
 
 ## blacklist
 
-ipset create -exist BLACKLIST hash:net  || exit 1
-ipset flush BLACKLIST || exit 1
+/sbin/ipset create -exist BLACKLIST hash:net  || exit 1
+/sbin/ipset flush BLACKLIST || exit 1
 
 array=("CH" "HK" "KR" "BR");
 i=0
@@ -19,7 +19,7 @@ do
 	i=i++
 done
 
-ipset list BLACKLIST || exit 1
+/sbin/ipset list BLACKLIST || exit 1
 
 firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 1 -m set --match-set BLACKLIST src -j REJECT || exit 1
 firewall-cmd --direct --add-rule ipv4 filter INPUT 1 -m set --match-set BLACKLIST src -j REJECT || exit 1
