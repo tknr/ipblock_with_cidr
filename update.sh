@@ -23,7 +23,7 @@ array=("CH" "HK" "KR" "BR");
 i=0
 for COUNTRY_CODE in ${array[@]}
 do
-	grep ${COUNTRY_CODE} cidr.txt| sed -e "s/^${COUNTRY_CODE}\t//" | xargs -i ipset -q add BLACKLIST {} || exit 1
+	grep ${COUNTRY_CODE} cidr.txt| sed -e "s/^${COUNTRY_CODE}\t//" | xargs -i IPSET -q add BLACKLIST {} || exit 1
 	i=i++
 done
 
@@ -43,7 +43,7 @@ array=("JP");
 i=0
 for COUNTRY_CODE in ${array[@]}
 do
-        grep ${COUNTRY_CODE} cidr.txt| sed -e "s/^${COUNTRY_CODE}\t//" | xargs -i ipset -q add WHITELIST {} || exit 1 || exit 1
+        grep ${COUNTRY_CODE} cidr.txt| sed -e "s/^${COUNTRY_CODE}\t//" | xargs -i IPSET -q add WHITELIST {} || exit 1 || exit 1
         i=i++
 done
 
