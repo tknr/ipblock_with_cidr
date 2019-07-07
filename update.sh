@@ -19,6 +19,7 @@ ${IPSET} flush BLACKLIST || exit 1
 
 # block country codes
 array=("CH" "HK" "KR" "BR");
+#
 
 i=0
 for COUNTRY_CODE in ${array[@]}
@@ -53,3 +54,5 @@ firewall-cmd --direct --add-rule ipv4 filter INPUT 0 -m set --match-set WHITELIS
 ${IPTABLES} -I INPUT -m state --state NEW -p tcp --dport 22 -m set --match-set WHITELIST src -j ACCEPT || exit 1
 
 rm -f cidr.txt || exit 1
+
+firewall-cmd --reload
