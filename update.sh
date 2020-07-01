@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 #export IFS=$'\n'
 
 if [ $(whoami) != "root" ]; then
